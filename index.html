@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今天吃什么</title>
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+    <div>吴仙女吃什么！！！</div>
+    <!-- 今天星期几 -->
+    <div>
+        今天星期几：<span id="weekday"></span>
+    </div>
+   
+    <script>
+        const date = new Date();
+        const day = date.getDay();
+        const days = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        document.getElementById('weekday').innerHTML = days[day];
+    </script>
+
+    <!-- 今天想吃什么 -->
+    <div id="food"></div>
+    <button id="retry-btn">再来一次</button>
+    <script>
+        const foods = ['麻辣烫', '火锅', '披萨', '汉堡', '寿司', '意大利面', '烤肉'];
+    
+        function updateFood() {
+            let randomIndex = Math.floor(Math.random() * foods.length);
+            document.getElementById('food').innerHTML = '今天吃什么？答案是：' + foods[randomIndex];
+        }
+    
+        // 初次更新内容
+        updateFood();
+    
+        // 确保DOM完全加载后再绑定事件
+        window.onload = function() {
+            document.getElementById('retry-btn').addEventListener('click', function() {
+                updateFood();
+            });
+        };
+    </script>
+    
+</body>
+</html>
